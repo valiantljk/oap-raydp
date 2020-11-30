@@ -11,3 +11,5 @@ dist/
 target/
 
 .DS_Store
+
+rebase.sh
