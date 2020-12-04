@@ -45,12 +45,13 @@ fi
 
 CORE_DIR="${CURRENT_DIR}/core"
 pushd ${CORE_DIR}
-mvn clean package -q -DskipTests
+#mvn clean package -q -DskipTests
 popd # core dir
 
 PYTHON_DIR="${CURRENT_DIR}/python"
 pushd ${PYTHON_DIR}
-python setup.py bdist_wheel
+which python
+/Users/dr6jl/anaconda3/bin/python3 setup.py bdist_wheel
 cp ${PYTHON_DIR}/dist/raydp-* ${DIST_PATH}
 popd # python dir
 

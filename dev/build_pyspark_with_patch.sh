@@ -65,7 +65,8 @@ mvn clean package -q -DskipTests
 
 # build pyspark
 pushd python
-python setup.py -q bdist_wheel
+
+/Users/dr6jl/anaconda3/bin/python3 setup.py -q bdist_wheel
 popd # python
 
 popd # spark
