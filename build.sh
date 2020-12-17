@@ -45,7 +45,7 @@ fi
 
 CORE_DIR="${CURRENT_DIR}/core"
 pushd ${CORE_DIR}
-#mvn clean package -q -DskipTests
+mvn clean package -q -DskipTests
 popd # core dir
 
 PYTHON_DIR="${CURRENT_DIR}/python"

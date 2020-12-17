@@ -82,6 +82,7 @@ class TorchEstimator(EstimatorInterface, SparkEstimatorInterface):
                  batch_size: int = None,
                  num_epochs: int = None,
                  shuffle: bool = True,
+                 placements = None,
                  num_processes_for_data_loader: int = 0,
                  **extra_config):
         """
@@ -134,6 +135,7 @@ class TorchEstimator(EstimatorInterface, SparkEstimatorInterface):
         self._shuffle = shuffle
         self._num_processes_for_data_loader = num_processes_for_data_loader
         self._extra_config = extra_config
+        self.placements = placements
 
         if self._num_processes_for_data_loader > 0:
             raise TypeError("multiple processes for data loader has not supported")
@@ -239,6 +241,7 @@ class TorchEstimator(EstimatorInterface, SparkEstimatorInterface):
         self._trainer = TorchTrainer(num_workers=self._num_workers,
                                      training_operator_cls=TorchEstimatorOperator,
                                      add_dist_sampler=False,
+                                     placements = self.placements,
                                      scheduler_step_freq=self._scheduler_step_freq,
                                      **self._extra_config)
 

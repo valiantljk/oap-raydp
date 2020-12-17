@@ -56,6 +56,8 @@ class SparkCluster(Cluster):
         extra_conf["spark.executor.instances"] = str(num_executors)
         extra_conf["spark.executor.cores"] = str(executor_cores)
         extra_conf["spark.executor.memory"] = str(executor_memory)
+        extra_conf["spark.driver.extraJavaOptions"] = "-Dio.netty.tryReflectionSetAccessible=true"
+        extra_conf["spark.executor.extraJavaOptions"] = "-Dio.netty.tryReflectionSetAccessible=true"
         extra_conf["spark.jars"] = ",".join(glob.glob(RAYDP_CP))
         spark_builder = SparkSession.builder
         for k, v in extra_conf.items():
